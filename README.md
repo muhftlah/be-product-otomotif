@@ -9,7 +9,7 @@ REST API untuk mengelola produk otomotif (motor/mobil) beserta varian, harga, da
 | Bahasa | Java 17 |
 | Framework | Spring Boot 3.5.6 |
 | Data Access | Spring Data JPA (Hibernate) |
-| Database | H2 (in-memory) |
+| Database | H2 Database (File-based) |
 | Build Tool | Maven |
 | Validasi | Jakarta Bean Validation (`@Valid`) |
 | Boilerplate | Lombok (`@Data`, `@RequiredArgsConstructor`, dll) |
@@ -31,10 +31,10 @@ com.mfathullah.be_product_otomotif
 ├── model/dto/
 │   ├── request/             # DTO untuk request body
 │   └── response/            # DTO untuk response body
-├── repository/               # Spring Data JPA repository
-├── service/                  # Business logic
-├── controller/                # REST controller
-└── exception/                 # Custom exception + global handler
+├── repository/              # Spring Data JPA repository
+├── service/                 # Business logic
+├── controller/              # REST controller
+└── exception/               # Custom exception + global handler
 ```
 
 ## Desain Skema Data
@@ -53,8 +53,9 @@ Variant     (1) ── (1) Stock
 ### 1. Clone & masuk ke folder project
 ```bash
 git clone <repository-url>
-cd be-product-otomotif
+cd be-product-otomotif/be-product-otomotif
 ```
+Kemudian buka project menggunakan IntelliJ IDEA (disarankan) dan pastikan menggunakan JDK 17.
 
 ### 2. Konfigurasi `application.properties`
 ```properties
@@ -77,30 +78,75 @@ server.port=8080 #default
 
 ### 3. Jalankan aplikasi
 ```bash
-# Java
-version 17
-
-# Maven
+Java Version : 17
+Build Tool   : Maven
 ./mvnw spring-boot:run
-
-# Gradle
-./gradlew bootRun
 ```
 
 ### 4. Cek H2 Console (opsional, untuk lihat isi database langsung)
 Buka `http://localhost:8080/h2-console`, gunakan JDBC URL sesuai `application.properties` di atas.
-Dimana : 
+Gunakan konfigurasi berikut:
   `JDBC URL: jdbc:h2:file:./data/warehouse`
   `username: mf_oto`
   `username: mf_oto`
-Dan disini sudah tersimpan pada be-product-otomotif -> data -> warehouse.mv.db sebagai acuan.
+  
+Database akan otomatis tersimpan pada:
+```
+be-product-otomotif/
+└── data/
+    └── warehouse.mv.db
+```
 
 ### 5. Import Postman Collection and Swagger
 File Collection bisa langsung di-import ke Postman untuk testing.
-`MF-OTO.postman_collection.json` -> untuk data product varian dan purchase logic.
-`MF-OTO-PARAMS.postman_collection.json` -> untuk parameter-parameter product sesuai kebutuhan.
+`MF-OTO.postman_collection.json`
+→ Collection utama untuk Product, Variant, Stock, dan Purchase.
 
-atau bisa dengan swagger `http://localhost:8080/swagger-ui/index.html`
+`MF-OTO-PARAMS.postman_collection.json`
+→ Collection untuk master data (Group Object, Brand, Model, Object Type).
+
+API juga dapat diuji melalui Swagger UI: `http://localhost:8080/swagger-ui/index.html`
+
+## Features
+
+```
+- CRUD Group Object
+- CRUD Brand
+- CRUD Object Type
+- CRUD Model
+- CRUD Item
+- CRUD Variant
+- Stock Management
+- Purchase Transaction
+- Optimistic Locking
+- Pessimistic Locking
+- Global Exception Handling
+- Swagger/OpenAPI Documentation
+- H2 Database
+```
+
+## Architecture
+
+```
+Controller
+      │
+      ▼
+Service
+      │
+      ▼
+Repository
+      │
+      ▼
+H2 Database
+```
+
+## Requirements
+
+```
+- Java 17+
+- Maven 3.9+
+- IntelliJ IDEA (recommended)
+```
 
 ## Urutan Penggunaan API
 
@@ -326,12 +372,3 @@ Semua error dikembalikan dalam format konsisten:
 | `InsufficientStockException` | 409 | Stok tidak cukup untuk memenuhi permintaan |
 | `ObjectOptimisticLockingFailureException` | 409 | Konflik konkurensi (dua request ubah data sama bersamaan) |
 | `MethodArgumentNotValidException` | 400 | Body request tidak lolos validasi (`@NotBlank`, `@Min`, dll) |
-
-## Keputusan Desain & Trade-off
-
-- **Soft delete, bukan hard delete** — semua `DELETE` hanya set `isActive = false`, supaya histori transaksi lama tidak rusak referensinya.
-- **DTO terpisah dari Entity** — request/response tidak pernah expose entity JPA langsung, menghindari kebocoran struktur internal & masalah lazy-loading saat serialisasi JSON.
-- **`BigDecimal` untuk harga**, bukan `Integer`/`double` — presisi uang wajib exact, floating point tidak aman untuk kalkulasi finansial.
-- **Stok di level Variant, bukan Item** — karena unit yang benar-benar dijual adalah varian spesifik.
-- **Endpoint `reserve`/`release`/`commit` dipisah dari `purchase`** — yang pertama mensimulasikan siklus order asinkron (checkout → bayar/batal, mis. dari keranjang belanja), yang kedua mensimulasikan pembelian langsung/point-of-sale. Keduanya sengaja ditunjukkan untuk mendemonstrasikan dua pola berbeda dalam menangani stok.
-- **Tidak ada module Order/Payment penuh** — di luar scope kebutuhan utama (Item, Variant, Pricing, Stock), tapi endpoint `purchase` dibuat untuk merepresentasikan bagaimana modul Order nantinya akan memakai logic stok ini.

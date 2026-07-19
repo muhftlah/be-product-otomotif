@@ -1,0 +1,553 @@
+{
+  "info": {
+    "_postman_id": "e37c9656-43c8-4c69-9088-5c325ea734c7",
+    "name": "MF-OTO",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "20700687"
+  },
+  "item": [
+    {
+      "name": "Item-Get All",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/items",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "items"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Item-Detail",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/items/1/detail",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "items",
+            "1",
+            "detail"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \"http://localhost:8080/api/items/1/detail\""
+      },
+      "response": []
+    },
+    {
+      "name": "Item-Get By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/items/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "items",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Item-Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"code\": \"HBD\",\n    \"name\": \"Honda Beat Delux\",\n    \"groupObjectId\": 1,\n    \"objectTypeId\": 1,\n    \"brandId\": 1,\n    \"modelId\": 1\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/items",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "items"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST \"http://localhost:8080/api/items\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"code\": \"HONDA-BEAT\",\n    \"name\": \"Honda Beat\",\n    \"groupObjectId\": 1,\n    \"objectTypeId\": 1,\n    \"brandId\": 1,\n    \"modelId\": 1\n  }'"
+      },
+      "response": []
+    },
+    {
+      "name": "Item-Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"code\": \"HDA\",\n    \"name\": \"Honda Beat Street\",\n    \"groupObjectId\": 1,\n    \"objectTypeId\": 1,\n    \"brandId\": 1,\n    \"modelId\": 1,\n    \"isActive\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/items/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "items",
+            "3"
+          ]
+        },
+        "description": "Generated from cURL: curl -X PUT \"http://localhost:8080/api/items/1\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"code\": \"HONDA-BEAT\",\n    \"name\": \"Honda Beat Street\",\n    \"groupObjectId\": 1,\n    \"objectTypeId\": 1,\n    \"brandId\": 1,\n    \"modelId\": 1\n  }'"
+      },
+      "response": []
+    },
+    {
+      "name": "Item-Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/items/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "items",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl -X DELETE \"http://localhost:8080/api/items/1\""
+      },
+      "response": []
+    },
+    {
+      "name": "Variants-Get By Item",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/items/1/variants",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "items",
+            "1",
+            "variants"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \"http://localhost:8080/api/items/1/variants\""
+      },
+      "response": []
+    },
+    {
+      "name": "Variant-Get By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/variants/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "variants",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \"http://localhost:8080/api/variants/1\""
+      },
+      "response": []
+    },
+    {
+      "name": "Variant-Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"itemId\": 1,\n    \"sku\": \"HONDA-BEAT-STREET\",\n    \"name\": \"Beat Street\",\n    \"color\": \"Merah\",\n    \"engineCc\": 110,\n    \"price\": 18500000,\n    \"initialStock\": 10\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/variants",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "variants"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST \"http://localhost:8080/api/variants\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"itemId\": 1,\n    \"sku\": \"HONDA-BEAT-CBS-RED\",\n    \"name\": \"Beat CBS-ISS Merah\",\n    \"color\": \"Merah\",\n    \"engineCc\": 110,\n    \"price\": 18500000,\n    \"initialStock\": 20\n  }'"
+      },
+      "response": []
+    },
+    {
+      "name": "Variant-Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"itemId\": 1,\n\t\"sku\": \"HONDA-BEAT-CBS-RED\",\n\t\"name\": \"Beat CBS-ISS Merah Maroon\",\n\t\"color\": \"Merah Maroon\",\n\t\"engineCc\": 110,\n\t\"price\": 18750000,\n\t\"initialStock\": 20\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/variants/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "variants",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl -X PUT \"http://localhost:8080/api/variants/1\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"itemId\": 1,\n    \"sku\": \"HONDA-BEAT-CBS-RED\",\n    \"name\": \"Beat CBS-ISS Merah Maroon\",\n    \"color\": \"Merah Maroon\",\n    \"engineCc\": 110,\n    \"price\": 18750000,\n    \"initialStock\": 20\n  }'"
+      },
+      "response": []
+    },
+    {
+      "name": "Variant-Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/variants/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "variants",
+            "1"
+          ]
+        },
+        "description": "Generated from cURL: curl -X DELETE \"http://localhost:8080/api/variants/1\""
+      },
+      "response": []
+    },
+    {
+      "name": "Stock-Get by Varaint",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/variants/1/stock",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "variants",
+            "1",
+            "stock"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \"http://localhost:8080/api/variants/1/stock\""
+      },
+      "response": []
+    },
+    {
+      "name": "Stock-Add quantity",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"quantity\": 10,\n    \"reason\": \"Restock dari supplier\"\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/variants/1/stock/add",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "variants",
+            "1",
+            "stock",
+            "add"
+          ]
+        },
+        "description": "Generated from cURL: curl -X PATCH \"http://localhost:8080/api/variants/1/stock/adjust\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"quantity\": 10,\n    \"reason\": \"Restock dari supplier\"\n  }'"
+      },
+      "response": []
+    },
+    {
+      "name": "Stock-Adjust quantity",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"quantity\": 10,\n    \"reason\": \"Adjust dari supplier\"\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/variants/1/stock/adjust",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "variants",
+            "1",
+            "stock",
+            "adjust"
+          ]
+        },
+        "description": "Generated from cURL: curl -X PATCH \"http://localhost:8080/api/variants/1/stock/adjust\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"quantity\": 10,\n    \"reason\": \"Restock dari supplier\"\n  }'"
+      },
+      "response": []
+    },
+    {
+      "name": "Stock-Reserve (Checkout)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"quantity\": 2\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/variants/1/stock/reserve",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "variants",
+            "1",
+            "stock",
+            "reserve"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST \"http://localhost:8080/api/variants/1/stock/reserve\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{ \"quantity\": 2 }'"
+      },
+      "response": []
+    },
+    {
+      "name": "Stock-Release (Batal Order)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"quantity\": 2 }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/variants/1/stock/release",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "variants",
+            "1",
+            "stock",
+            "release"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST \"http://localhost:8080/api/variants/1/stock/release\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{ \"quantity\": 2 }'"
+      },
+      "response": []
+    },
+    {
+      "name": "Stock-Quantity Reduction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"quantity\": 2\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/variants/1/stock/commit",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "variants",
+            "1",
+            "stock",
+            "commit"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST \"http://localhost:8080/api/variants/1/stock/commit\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{ \"quantity\": 2 }'"
+      },
+      "response": []
+    },
+    {
+      "name": "Purchases product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"customerName\": \"Budi Santoso\",\n    \"lines\": [\n        {\n            \"variantId\": 1,\n            \"quantity\": 2\n        },\n        {\n            \"variantId\": 2,\n            \"quantity\": 1\n        }\n    ]\n}\n\n/*Contoh data kurang\n\n{\n    \"customerName\": \"Budi Santoso\",\n    \"lines\": [\n        {\n            \"variantId\": 1,\n            \"quantity\": 1\n        },\n        {\n            \"variantId\": 2,\n            \"quantity\": 999999\n        }\n    ]\n}\n*/",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/purchases",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "purchases"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST \"http://localhost:8080/api/purchases\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"customerName\": \"Budi Santoso\",\n    \"lines\": [\n      { \"variantId\": 1, \"quantity\": 2 },\n      { \"variantId\": 2, \"quantity\": 1 }\n    ]\n  }'"
+      },
+      "response": []
+    }
+  ]
+}
