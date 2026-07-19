@@ -86,9 +86,11 @@ Build Tool   : Maven
 ### 4. Cek H2 Console (opsional, untuk lihat isi database langsung)
 Buka `http://localhost:8080/h2-console`, gunakan JDBC URL sesuai `application.properties` di atas.
 Gunakan konfigurasi berikut:
-  `JDBC URL: jdbc:h2:file:./data/warehouse`
-  `username: mf_oto`
-  `username: mf_oto`
+```
+JDBC URL: jdbc:h2:file:./data/warehouse
+username: mf_oto
+password: mf_oto
+```
   
 Database akan otomatis tersimpan pada:
 ```
